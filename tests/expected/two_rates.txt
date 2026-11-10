@@ -1,0 +1,2 @@
+long term  0.244 mm/yr   12.1 years
+short term 0.120 mm/yr   24.6 years

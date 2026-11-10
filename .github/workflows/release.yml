@@ -1,0 +1,20 @@
+name: Release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check . && pytest -q
+      - run: zip -r "${{ github.event.repository.name }}-${{ github.ref_name }}.zip" code tests posts media README.md LICENSE requirements.txt
+      - run: gh release create "${{ github.ref_name }}" *.zip --title "${{ github.ref_name }}" --notes "Code, tests, posts and media for this week."
+        env:
+          GH_TOKEN: ${{ github.token }}

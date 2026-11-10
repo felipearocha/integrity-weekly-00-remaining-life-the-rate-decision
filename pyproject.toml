@@ -1,0 +1,16 @@
+[project]
+name = "integrity-weekly-00-remaining-life-the-rate-decision"
+version = "1.0.0"
+description = "Remaining life: the rate decision: runnable integrity engineering code with tests"
+requires-python = ">=3.11"
+authors = [{ name = "Felipe Rocha" }]
+license = { text = "MIT" }
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
